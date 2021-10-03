@@ -5,6 +5,9 @@ import { UserAddOutlined,
 
 import {emailValidation,
     minLengthValidation} from "../../../utils/formValidation";
+
+import { signUpApi } from "../../../api/user";
+
 import "./RegisterForm.scss";
 
 export default function RegisterForm(){
@@ -62,7 +65,7 @@ export default function RegisterForm(){
         }
     }
 
-    const register = e => {
+    const register = async (e) => {
         
         const { email, password, repeatPassword, privacyPolicy} = formValid
 
@@ -81,9 +84,44 @@ export default function RegisterForm(){
                     message: "Las contraseñas tienen que ser iguales"
                 })
             } else {
+                const result = await signUpApi(inputs)
 
+                if(!result.ok){
+                    notification.error({
+                        message: result.message
+                    })
+                } else {
+                    notification.success({
+                        message: result.message
+                    })
+                    
+                    resetForm()
+                }
             }
         }
+    }
+
+    const resetForm = () => {
+        const inputs = document.getElementsByTagName('input')
+
+        for(let i = 0; i < inputs.length; i++){
+            inputs[i].classList.remove("success")
+            inputs[i].classList.remove("error")
+        }
+
+        setInputs({
+            email: "",
+            password: "",
+            repeatPassword: "",
+            privacyPolicy: false
+        })
+
+        setFormValid({
+            email: false,
+            password: false,
+            repeatPassword: false,
+            privacyPolicy: false
+        })
     }
 
     return (

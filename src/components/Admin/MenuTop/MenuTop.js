@@ -8,12 +8,19 @@ import { MenuUnfoldOutlined,
 import Logo from '../../../assets/img/png/logo.png';
 import './MenuTop.scss';
 
+import {logout} from '../../../api/auth';
+
 export default function MenuTop(props){
 
     const { menuCollapsed, setMenuCollapsed} = props
 
     const menuNavbar = () => {
         setMenuCollapsed(!menuCollapsed)
+    }
+
+    const logoutUser = () => {
+        logout()
+        window.location.reload()
     }
 
     return(
@@ -32,7 +39,7 @@ export default function MenuTop(props){
                 </Button>
             </div>
             <div className="menu-top__right">
-                <Button type="link">
+                <Button type="link" onClick={logoutUser}>
                     <PoweroffOutlined />
                 </Button>
             </div>

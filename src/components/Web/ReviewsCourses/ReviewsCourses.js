@@ -1,4 +1,4 @@
-import react from "react";
+import React from "react";
 import { Row, Col, Card, Avatar } from "antd";
 import AvatarPersona from "../../../assets/img/jpg/avatar.jpg";
 

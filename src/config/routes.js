@@ -8,10 +8,12 @@ import AdminUsers from '../pages/Admin/Users'
 import MenuWeb from "../pages/Admin/MenuWeb/MenuWeb";
 import Error404 from '../pages/Admin/Error404'
 import Courses from "../pages/Courses";
+import AdminBlog from "../pages/Admin/Blog";
 
 import Home from '../pages/Home'
 import Contact from '../pages/Contact'
 import AdminCourses from "../pages/Admin/Courses";
+import Blog from "../pages/Blog";
 
 const routes = [
     {
@@ -45,6 +47,11 @@ const routes = [
                 exact: true
             },
             {
+                path: "/admin/blog",
+                component: AdminBlog,
+                exact: true
+            },
+            {
                 component: Error404
             }
         ]
@@ -67,6 +74,16 @@ const routes = [
             {
                 path: "/courses",
                 component: Courses,
+                exact: true
+            },
+            {
+                path: "/blog",
+                component: Blog,
+                exact: true
+            },
+            {
+                path: "/blog/:url",
+                component: Blog,
                 exact: true
             },
             {

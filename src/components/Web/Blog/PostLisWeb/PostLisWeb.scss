@@ -11,6 +11,7 @@
 
     .post{
         color: $font-light;
+        justify-content: left;
 
         &__date{
             display: flex;
@@ -23,9 +24,10 @@
             padding: 5px 15px;
         }
 
-        .ant-list.item-meta-title{
+        &__title{
             color: $font-light;
             font-size: 16px;
+            text-align: left;
             &:hover{
                 color: $primary-color-dark;
             }
